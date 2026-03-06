@@ -1,11 +1,9 @@
 {
   "functions": {
     "app/api/roast/route.ts": {
-      "runtime": "edge",
       "maxDuration": 15
     },
     "app/api/commits/route.ts": {
-      "runtime": "edge",
       "maxDuration": 10
     }
   }

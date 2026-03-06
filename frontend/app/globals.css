@@ -1,0 +1,191 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Google Fonts ─── */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=JetBrains+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap');
+
+/* ─── Design tokens ─── */
+:root {
+  --bg-base:        #FAF7F2;
+  --bg-surface:     #F3EDE3;
+  --bg-elevated:    #FFFCF8;
+  --ink-primary:    #1C1712;
+  --ink-secondary:  #5C4F3A;
+  --ink-muted:      #A0917C;
+  --fire-red:       #E8341A;
+  --fire-orange:    #F57C2B;
+  --fire-amber:     #F5C842;
+  --fire-ember:     #C94A1E;
+  --border:         #DDD3C3;
+  --border-hot:     #F57C2B;
+  --success:        #3B7A57;
+  --shadow-warm:    rgba(200, 120, 50, 0.12);
+}
+
+/* ─── Global reset ─── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg-base);
+  color: var(--ink-primary);
+  overflow-x: hidden;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Hide native cursor when custom is active */
+@media (hover: hover) {
+  * { cursor: none !important; }
+}
+
+/* ─── Grain texture overlay ─── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9998;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.028;
+}
+
+/* ─── Typography helpers ─── */
+.font-display { font-family: 'Bebas Neue', sans-serif; }
+.font-serif   { font-family: 'Playfair Display', serif; }
+.font-mono    { font-family: 'JetBrains Mono', monospace; }
+
+/* ─── Blink cursor for typewriter ─── */
+@keyframes blink-cursor {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* ─── Nav ─── */
+.gv-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 48px;
+  background: rgba(250, 247, 242, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.gv-nav-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4rem;
+  letter-spacing: 0.08em;
+  color: var(--ink-primary);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.gv-nav-logo span { color: var(--fire-red); }
+
+.gv-nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+.gv-nav-links a {
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--ink-secondary);
+  text-decoration: none;
+  text-transform: uppercase;
+  position: relative;
+  transition: color 0.2s;
+}
+.gv-nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0;
+  width: 0; height: 1.5px;
+  background: var(--fire-red);
+  transition: width 0.3s ease;
+}
+.gv-nav-links a:hover { color: var(--fire-red); }
+.gv-nav-links a:hover::after { width: 100%; }
+
+/* ─── Footer ─── */
+.gv-footer {
+  border-top: 1px solid var(--border);
+  padding: 24px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.gv-footer-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.1em;
+  color: var(--ink-muted);
+}
+.gv-footer-logo span { color: var(--fire-red); }
+
+.gv-footer a:hover {
+  color: var(--fire-orange) !important;
+}
+
+/* ─── Section divider ─── */
+.gv-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 48px;
+  margin: 8px 0;
+}
+.gv-divider-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+.gv-divider-badge {
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  padding: 4px 12px;
+  border-radius: 100px;
+  font-family: 'DM Sans', sans-serif;
+  white-space: nowrap;
+}
+
+/* ─── Scroll hint arrow ─── */
+@keyframes bounce-arrow {
+  0%, 100% { transform: rotate(45deg) translateY(0); }
+  50%       { transform: rotate(45deg) translateY(6px); }
+}
+
+/* ─── Mobile ─── */
+@media (max-width: 768px) {
+  .gv-nav { padding: 14px 20px; }
+  .gv-nav-links { display: none; }
+  .gv-footer { flex-direction: column; gap: 12px; padding: 20px; }
+  .gv-divider { padding: 0 20px; }
+  .gv-divider-badge { font-size: 0.6rem; }
+}
+
+@media (max-width: 640px) {
+  .gv-nav-logo { font-size: 1.2rem; }
+}

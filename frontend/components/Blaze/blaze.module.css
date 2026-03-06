@@ -1,0 +1,427 @@
+.blaze-wrap {
+  position: relative;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+.blaze-wrap:hover {
+  transform: scale(1.04) rotate(-1deg);
+}
+
+/* ── Floating body ── */
+.body-group {
+  animation: blazeFloat 3s ease-in-out infinite;
+  transform-origin: 80px 170px;
+}
+
+/* ── Flame animations ── */
+.flame-outer {
+  animation: flickerOuter 1.4s ease-in-out infinite alternate;
+  transform-origin: 80px 72px;
+}
+.flame-inner {
+  animation: flickerInner 0.9s ease-in-out infinite alternate;
+  transform-origin: 80px 72px;
+}
+.flame-tip {
+  animation: flickerTip 1.1s ease-in-out infinite alternate;
+  transform-origin: 80px 60px;
+}
+
+/* ── Arms ── */
+.arm-l {
+  animation: armL 3s ease-in-out infinite;
+  transform-origin: 72px 152px;
+}
+.arm-r {
+  animation: armR 3s ease-in-out infinite;
+  transform-origin: 88px 152px;
+}
+
+/* ── Eyes / blink ── */
+.eye-blink {
+  animation: blink 4s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.pupil-left {
+  animation: gaze 5s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+/* ── Extras (shared) ── */
+.sweat-drop { animation: sweatAnim 3s ease-in infinite; }
+.sparkle-a  { animation: sparkAnim 2s ease-out infinite 0.2s;   transform-origin: 112px 90px; }
+.sparkle-b  { animation: sparkAnim 2s ease-out infinite 0.8s;   transform-origin: 46px  100px; }
+.sparkle-c  { animation: sparkAnim 1.6s ease-out infinite 1.3s; transform-origin: 118px 110px; }
+
+/* ══════════════════════════════════════════
+   STATE: loading
+   ══════════════════════════════════════════ */
+.state-loading .arm-l { animation-duration: 0.38s; }
+.state-loading .arm-r { animation-duration: 0.38s; }
+.state-loading .flame-outer { animation-duration: 0.5s; }
+.state-loading .flame-inner { animation-duration: 0.3s; }
+.state-loading .body-group  { animation-duration: 1.6s; }
+
+.steam   { animation: steamRise 2.2s ease-out infinite; }
+.steam-2 { animation: steamRise 2.2s ease-out infinite 0.55s; }
+.steam-3 { animation: steamRise 2.2s ease-out infinite 1.1s; }
+
+/* ══════════════════════════════════════════
+   STATE: success
+   ══════════════════════════════════════════ */
+.state-success .flame-outer { animation-duration: 2.5s; }
+.state-success .body-group  { animation-duration: 3.5s; }
+
+.star-a { animation: starPop 0.5s ease-out forwards, starFloat 3s ease-in-out infinite 0.5s; transform-origin: 42px 81px; }
+.star-b { animation: starPop 0.5s ease-out forwards 0.15s, starFloat 2.8s ease-in-out infinite 0.65s; transform-origin: 118px 77px; }
+.star-c { animation: starPop 0.5s ease-out forwards 0.3s,  starFloat 3.2s ease-in-out infinite 0.8s; transform-origin: 130px 100px; }
+.badge-pulse { animation: badgePulse 1.8s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+
+/* ══════════════════════════════════════════
+   STATE: error
+   ══════════════════════════════════════════ */
+.state-error .body-group  { animation: errorShake 0.45s ease-in-out infinite; }
+.state-error .flame-outer { animation-duration: 2s; opacity: 0.7; }
+.state-error .arm-l       { animation: none; }
+.state-error .arm-r       { animation: none; }
+
+/* ══════════════════════════════════════════
+   STATE: not-found (404)
+   ══════════════════════════════════════════ */
+.state-not-found .body-group { animation: blazeFloat 4.5s ease-in-out infinite; }
+.state-not-found .flame-outer { animation-duration: 2.2s; transform: scale(0.7); opacity: 0.7; }
+.state-not-found .flame-inner { transform: scale(0.7); }
+.state-not-found .flame-tip   { transform: scale(0.7); }
+
+.question   { animation: questionFloat 3s ease-in-out infinite; }
+.question-2 { animation: questionFloat 3s ease-in-out infinite 0.6s; }
+.question-3 { animation: questionFloat 3s ease-in-out infinite 1.2s; }
+
+/* ══════════════════════════════════════════
+   STATE: nuclear
+   ══════════════════════════════════════════ */
+.state-nuclear .flame-outer { animation-duration: 0.55s; }
+.state-nuclear .flame-inner { animation-duration: 0.35s; }
+.state-nuclear .body-group  { animation-duration: 2s; }
+.state-nuclear .arm-r       { animation: none; }
+
+.side-flame-l { animation: sideFlameL 0.8s ease-in-out infinite alternate; transform-origin: 52px 90px; }
+.side-flame-r { animation: sideFlameR 0.8s ease-in-out infinite alternate; transform-origin: 108px 90px; }
+.nuke-extra   { animation: nukeGrow 1.2s ease-in-out infinite alternate; transform-origin: 80px 72px; }
+
+/* ══════════════════════════════════════════
+   STATE: rate-limited
+   ══════════════════════════════════════════ */
+.state-rate-limited .body-group  { animation: blazeFloat 6s ease-in-out infinite; }
+.state-rate-limited .arm-l       { animation: armDroop 5s ease-in-out infinite; }
+.state-rate-limited .arm-r       { animation: armDroop 5s ease-in-out infinite 0.4s; }
+.state-rate-limited .flame-outer { animation-duration: 4s; }
+.state-rate-limited .flame-inner { animation-duration: 3s; }
+
+.zzz   { animation: zzzFloat 2.8s ease-in-out infinite; }
+.zzz-2 { animation: zzzFloat 2.8s ease-in-out infinite 0.7s; }
+.zzz-3 { animation: zzzFloat 2.8s ease-in-out infinite 1.4s; }
+
+/* ══════════════════════════════════════════
+   STATE: empty
+   ══════════════════════════════════════════ */
+.state-empty .body-group  { animation: blazeFloat 2.8s ease-in-out infinite; }
+.state-empty .eye-blink   { animation-duration: 2s; }
+
+.orbiter { animation: orbitCW 4s linear infinite; transform-origin: 80px 160px; }
+
+/* ══════════════════════════════════════════
+   STATE: mild
+   ══════════════════════════════════════════ */
+.state-mild .arm-r { animation: none; }
+
+/* ══════════════════════════════════════════
+   STATE: done / exhausted
+   ══════════════════════════════════════════ */
+.state-done .body-group  { animation: blazeFloat 7s ease-in-out infinite; }
+.state-done .arm-l       { animation: armDroop 6s ease-in-out infinite; }
+.state-done .arm-r       { animation: armDroop 6s ease-in-out infinite 0.5s; }
+.state-done .flame-outer { animation-duration: 5s; }
+.state-done .flame-inner { animation-duration: 4s; }
+
+.tear { animation: tearDrop 3s ease-in infinite; }
+
+/* ══════════════════════════════════════════
+   STATE: roasting (compat)
+   ══════════════════════════════════════════ */
+.state-roasting .arm-r       { animation: none; }
+.state-roasting .flame-outer { animation-duration: 0.7s; }
+
+/* ══════════════════════════════════════════
+   KEYFRAMES
+   ══════════════════════════════════════════ */
+@keyframes blazeFloat {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-6px); }
+}
+@keyframes flickerOuter {
+  0%   { transform: scaleX(1)    scaleY(1)    skewX(0deg);  opacity: 0.95; }
+  30%  { transform: scaleX(0.9)  scaleY(1.06) skewX(-2deg); opacity: 0.85; }
+  70%  { transform: scaleX(1.07) scaleY(0.97) skewX(2deg);  opacity: 1;    }
+  100% { transform: scaleX(0.95) scaleY(1.04) skewX(-1deg); opacity: 0.9;  }
+}
+@keyframes flickerInner {
+  0%   { transform: scaleX(1)    scaleY(1)    translateY(0px);   opacity: 1;   }
+  50%  { transform: scaleX(1.1)  scaleY(0.95) translateY(2px);   opacity: 0.9; }
+  100% { transform: scaleX(0.93) scaleY(1.08) translateY(-1px);  opacity: 1;   }
+}
+@keyframes flickerTip {
+  0%   { transform: scaleX(1)   scaleY(1)   skewX(0deg);  }
+  40%  { transform: scaleX(0.8) scaleY(1.1) skewX(3deg);  }
+  100% { transform: scaleX(1.1) scaleY(0.9) skewX(-2deg); }
+}
+@keyframes armL {
+  0%, 100% { transform: rotate(0deg);  }
+  50%       { transform: rotate(-6deg); }
+}
+@keyframes armR {
+  0%, 100% { transform: rotate(0deg); }
+  50%       { transform: rotate(6deg); }
+}
+@keyframes armDroop {
+  0%, 100% { transform: rotate(0deg);  }
+  50%       { transform: rotate(5deg); }
+}
+@keyframes blink {
+  0%, 92%, 100% { transform: scaleY(1);    }
+  95%            { transform: scaleY(0.05); }
+}
+@keyframes gaze {
+  0%, 100% { transform: translateX(0px);   }
+  30%       { transform: translateX(1.5px); }
+  70%       { transform: translateX(-1px);  }
+}
+@keyframes sweatAnim {
+  0%   { opacity: 0;   transform: translateY(-4px); }
+  20%  { opacity: 0.7; }
+  80%  { opacity: 0.5; transform: translateY(8px);  }
+  100% { opacity: 0;   transform: translateY(14px); }
+}
+@keyframes sparkAnim {
+  0%   { opacity: 0; transform: scale(0)   translateY(0px);   }
+  30%  { opacity: 1; transform: scale(1)   translateY(-6px);  }
+  100% { opacity: 0; transform: scale(0.3) translateY(-18px); }
+}
+@keyframes errorShake {
+  0%, 100% { transform: translateX(0px);  }
+  20%       { transform: translateX(-5px); }
+  40%       { transform: translateX(5px);  }
+  60%       { transform: translateX(-4px); }
+  80%       { transform: translateX(4px);  }
+}
+@keyframes steamRise {
+  0%   { opacity: 0;   transform: translateY(0px)   scaleX(1);   }
+  25%  { opacity: 0.5; }
+  75%  { opacity: 0.3; transform: translateY(-14px) scaleX(1.3); }
+  100% { opacity: 0;   transform: translateY(-22px) scaleX(0.8); }
+}
+@keyframes questionFloat {
+  0%, 100% { transform: translateY(0px)   rotate(-6deg); opacity: 0.65; }
+  50%       { transform: translateY(-10px) rotate(6deg);  opacity: 1;    }
+}
+@keyframes zzzFloat {
+  0%   { opacity: 0;   transform: translateY(0px)   scale(0.7); }
+  20%  { opacity: 0.8; }
+  80%  { opacity: 0.5; transform: translateY(-16px)  scale(1.0); }
+  100% { opacity: 0;   transform: translateY(-24px)  scale(0.9); }
+}
+@keyframes orbitCW {
+  from { transform: rotate(0deg)   translateX(26px) rotate(0deg); }
+  to   { transform: rotate(360deg) translateX(26px) rotate(-360deg); }
+}
+@keyframes tearDrop {
+  0%   { opacity: 0;   transform: translateY(-2px) scaleY(0.6); }
+  15%  { opacity: 0.8; transform: translateY(0px)  scaleY(1);   }
+  70%  { opacity: 0.6; transform: translateY(8px)  scaleY(1.3); }
+  100% { opacity: 0;   transform: translateY(16px) scaleY(0.5); }
+}
+@keyframes starPop {
+  from { transform: scale(0) rotate(-20deg); opacity: 0; }
+  to   { transform: scale(1) rotate(0deg);   opacity: 1; }
+}
+@keyframes starFloat {
+  0%, 100% { transform: translateY(0px)  rotate(0deg);   }
+  50%       { transform: translateY(-5px) rotate(10deg);  }
+}
+@keyframes badgePulse {
+  0%, 100% { transform: scale(1);   opacity: 0.25; }
+  50%       { transform: scale(1.5); opacity: 0;    }
+}
+@keyframes sideFlameL {
+  0%   { transform: scaleX(1) scaleY(1) skewX(0deg);   opacity: 0.6; }
+  100% { transform: scaleX(0.8) scaleY(1.1) skewX(4deg); opacity: 0.8; }
+}
+@keyframes sideFlameR {
+  0%   { transform: scaleX(1) scaleY(1) skewX(0deg);    opacity: 0.6; }
+  100% { transform: scaleX(0.8) scaleY(1.1) skewX(-4deg); opacity: 0.8; }
+}
+@keyframes nukeGrow {
+  0%   { transform: scale(1.55) skewX(-1deg); opacity: 0.8; }
+  100% { transform: scale(1.7)  skewX(1deg);  opacity: 0.95; }
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .body-group, .flame-outer, .flame-inner, .flame-tip,
+  .arm-l, .arm-r, .eye-blink, .pupil-left, .sweat-drop,
+  .sparkle-a, .sparkle-b, .sparkle-c, .steam, .steam-2, .steam-3,
+  .star-a, .star-b, .star-c, .question, .question-2, .question-3,
+  .zzz, .zzz-2, .zzz-3, .orbiter, .tear, .side-flame-l, .side-flame-r,
+  .nuke-extra, .badge-pulse {
+    animation: none !important;
+  }
+}
+
+
+/* ── Flame animations ── */
+.flame-outer {
+  animation: flickerOuter 1.4s ease-in-out infinite alternate;
+  transform-origin: 80px 72px;
+}
+.flame-inner {
+  animation: flickerInner 0.9s ease-in-out infinite alternate;
+  transform-origin: 80px 72px;
+}
+.flame-tip {
+  animation: flickerTip 1.1s ease-in-out infinite alternate;
+  transform-origin: 80px 60px;
+}
+
+/* ── Arms ── */
+.arm-l {
+  animation: armL 3s ease-in-out infinite;
+  transform-origin: 72px 152px;
+}
+.arm-r {
+  animation: armR 3s ease-in-out infinite;
+  transform-origin: 88px 152px;
+}
+
+/* ── Eyes ── */
+.eye-blink {
+  animation: blink 4s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.pupil-left {
+  animation: gaze 5s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+/* ── Extras ── */
+.sweat-drop {
+  animation: sweatAnim 3s ease-in infinite;
+}
+.sparkle-a { animation: sparkAnim 2s ease-out infinite 0.2s;  transform-origin: 112px 90px; }
+.sparkle-b { animation: sparkAnim 2s ease-out infinite 0.8s;  transform-origin: 46px 100px; }
+.sparkle-c { animation: sparkAnim 1.6s ease-out infinite 1.3s; transform-origin: 118px 110px; }
+
+
+/* ── State: loading (fast arms) ── */
+.state-loading .arm-l { animation-duration: 0.4s; }
+.state-loading .arm-r { animation-duration: 0.4s; }
+.state-loading .flame-outer { animation-duration: 0.5s; }
+.state-loading .flame-inner { animation-duration: 0.35s; }
+
+/* ── State: roasting (right arm points, big flame) ── */
+.state-roasting .arm-r {
+  animation: none;
+  transform: rotate(45deg);
+}
+.state-roasting .flame-outer {
+  transform: scale(1.3);
+  transform-origin: 80px 72px;
+  animation-duration: 0.6s;
+}
+
+/* ── State: nuclear (huge flame, wide eyes) ── */
+.state-nuclear .flame-outer {
+  transform: scale(1.6);
+  transform-origin: 80px 72px;
+}
+
+/* ── State: done (slight droop) ── */
+.state-done .body-group {
+  animation: blazeFloat 6s ease-in-out infinite;
+  transform: rotate(-8deg);
+}
+
+/* ── Hover boost ── */
+.blaze-wrap:hover .flame-outer { animation-duration: 0.6s; }
+.blaze-wrap:hover .flame-inner { animation-duration: 0.4s; }
+
+/* ── Keyframes ── */
+@keyframes blazeFloat {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-6px); }
+}
+@keyframes flickerOuter {
+  0%   { transform: scaleX(1)    scaleY(1)    skewX(0deg);   opacity: 0.95; }
+  30%  { transform: scaleX(0.9)  scaleY(1.06) skewX(-2deg);  opacity: 0.85; }
+  70%  { transform: scaleX(1.07) scaleY(0.97) skewX(2deg);   opacity: 1;    }
+  100% { transform: scaleX(0.95) scaleY(1.04) skewX(-1deg);  opacity: 0.9;  }
+}
+@keyframes flickerInner {
+  0%   { transform: scaleX(1)    scaleY(1)    translateY(0px);   opacity: 1;   }
+  50%  { transform: scaleX(1.1)  scaleY(0.95) translateY(2px);   opacity: 0.9; }
+  100% { transform: scaleX(0.93) scaleY(1.08) translateY(-1px);  opacity: 1;   }
+}
+@keyframes flickerTip {
+  0%   { transform: scaleX(1)   scaleY(1)   skewX(0deg);  }
+  40%  { transform: scaleX(0.8) scaleY(1.1) skewX(3deg);  }
+  100% { transform: scaleX(1.1) scaleY(0.9) skewX(-2deg); }
+}
+@keyframes armL {
+  0%, 100% { transform: rotate(0deg);  }
+  50%       { transform: rotate(-6deg); }
+}
+@keyframes armR {
+  0%, 100% { transform: rotate(0deg); }
+  50%       { transform: rotate(6deg); }
+}
+@keyframes blink {
+  0%, 92%, 100% { transform: scaleY(1);    }
+  95%            { transform: scaleY(0.05); }
+}
+@keyframes gaze {
+  0%, 100% { transform: translateX(0px);   }
+  30%       { transform: translateX(1.5px); }
+  70%       { transform: translateX(-1px);  }
+}
+@keyframes sweatAnim {
+  0%   { opacity: 0;   transform: translateY(-4px); }
+  20%  { opacity: 0.7; }
+  80%  { opacity: 0.5; transform: translateY(8px);  }
+  100% { opacity: 0;   transform: translateY(14px); }
+}
+@keyframes sparkAnim {
+  0%   { opacity: 0; transform: scale(0)   translateY(0px);    }
+  30%  { opacity: 1; transform: scale(1)   translateY(-6px);   }
+  100% { opacity: 0; transform: scale(0.3) translateY(-18px);  }
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .body-group,
+  .flame-outer,
+  .flame-inner,
+  .flame-tip,
+  .arm-l,
+  .arm-r,
+  .eye-blink,
+  .pupil-left,
+  .sweat-drop,
+  .sparkle-a,
+  .sparkle-b,
+  .sparkle-c {
+    animation: none !important;
+  }
+}

@@ -1,0 +1,30 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="flame" cx="50%" cy="70%" r="60%">
+      <stop offset="0%" stop-color="#FFF176"/>
+      <stop offset="40%" stop-color="#F5C842"/>
+      <stop offset="100%" stop-color="#E8341A" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="head" cx="40%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#F5C842"/>
+      <stop offset="60%" stop-color="#E8A020"/>
+      <stop offset="100%" stop-color="#C97A10"/>
+    </radialGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="64" height="64" fill="#FAF7F2" rx="12"/>
+  <!-- Flame -->
+  <path d="M32 18C26 16 22 12 24 6C25 3 28 0 29-2C30 2 31 4 32 3C33 4 34 2 35-2C37 1 40 5 41 9C43 15 39 18 32 18Z" 
+        fill="url(#flame)" transform="translate(0, 8)"/>
+  <!-- Head -->
+  <ellipse cx="32" cy="35" rx="10" ry="9" fill="url(#head)"/>
+  <!-- Eyes -->
+  <ellipse cx="28" cy="35" rx="2.5" ry="2.8" fill="white"/>
+  <ellipse cx="36" cy="35" rx="2.5" ry="2.8" fill="white"/>
+  <circle cx="28.5" cy="35" r="1.6" fill="#3D2200"/>
+  <circle cx="36.5" cy="35" r="1.6" fill="#3D2200"/>
+  <!-- Mouth Smirk -->
+  <path d="M27 40Q32 43 37 40" stroke="#5C3A00" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+  <!-- Body stick -->
+  <line x1="32" y1="43" x2="32" y2="56" stroke="#C4A265" stroke-width="4" stroke-linecap="round"/>
+</svg>
